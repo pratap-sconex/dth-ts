@@ -22,7 +22,7 @@ const Navbar = () => {
               <Link className="nav-link" to="/channels">Channels</Link>
             </li>
             <li className="nav-item">
-              <Link className="nav-link" to="/add-channels">Add Channels</Link>
+              <Link className="nav-link" to="/add-channel">Add Channel</Link>
             </li>
           </ul>
         </div>

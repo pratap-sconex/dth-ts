@@ -24,13 +24,15 @@ export const createLoadChannelsActionThunk = (): ThunkAction<void, StoreState, u
 
 export const createAddChannelActionThunk = (channel: Channel): ThunkAction<void, StoreState, unknown, ChannelAction> => async (dispatch) => {
     dispatch(createWaitForChannelAction("Please wait while adding data...!"));
-    try {
-        await channelService.addChannel(channel);
-        dispatch(createLoadChannelsActionThunk());
-    } catch (exception: any) {
-        console.error(exception);
-        dispatch(createErrForChannelAction("Sorry! Unable to process the requested action! Please retry later!"));
-    }
+    setTimeout(async () => {
+        try {
+            await channelService.addChannel(channel);
+            dispatch(createLoadChannelsActionThunk());
+        } catch (exception: any) {
+            console.error(exception);
+            dispatch(createErrForChannelAction("Sorry! Unable to process the requested action! Please retry later!"));
+        }
+    }, 2000)
 };
 
 export const createDeleteChannelActionThunk = (id: string): ThunkAction<void, StoreState, unknown, ChannelAction> => async (dispatch) => {
