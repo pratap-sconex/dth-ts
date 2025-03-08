@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { createAddChannelActionThunk } from "../redux/channels/channelThunk";
-import { createWaitForChannelAction } from '../redux/channels/channelActions';
 
 import { ChannelReducerState, ChannelStateStatus } from "../redux/channels/channelReducer";
 import { StoreState } from '../redux/store';
@@ -22,9 +21,8 @@ const AddChannel = () => {
   )
 
   const formSubmitted = async (data: Channel) => {
-    dispatch(createAddChannelActionThunk(data));
     reset();
-    dispatch(createWaitForChannelAction("Adding Channel, Plz wait..."))
+    dispatch(createAddChannelActionThunk(data));
     setTimeout(() => {
       navigate("/channels");
     }, 2000)
@@ -33,9 +31,9 @@ const AddChannel = () => {
   return (
     <div className="container mt-4">
       <h2>Add Channels</h2>
-      <div className="card">
-        {
-          msg ? <MsgBox msg={msg} msgType={status === ChannelStateStatus.WORK_IN_PROGRESS ? "info" : "err"} /> :
+      {
+        msg ? <MsgBox msg={msg} msgType={status === ChannelStateStatus.WORK_IN_PROGRESS ? "info" : "err"} /> :
+          <div className="card">
             <div className="card-body">
               <form onSubmit={handleSubmit(formSubmitted)} autoComplete='off'>
                 <div className="mb-3">
@@ -62,9 +60,9 @@ const AddChannel = () => {
                 <button type="submit" className="btn btn-primary">Add Channel</button>
               </form>
             </div>
-        }
-      </div>
-    </div >
+          </div>
+      }
+    </div>
   );
 };
 
