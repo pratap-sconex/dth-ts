@@ -27,29 +27,30 @@ const Channels = () => {
             <div className='mx-5'>
                 {
                     msg ? <MsgBox msg={msg} msgType={status === ChannelStateStatus.WORK_IN_PROGRESS ? "info" : "err"} /> :
-                        < table className="table table-responsive">
-                            <thead>
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Channel Name</th>
-                                    <th scope="col">Cateogry</th>
-                                    <th scope="col">Price</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {
-                                    channels?.map(channel => (
-                                        <tr key={channel.id}>
-                                            <td>{channel.id}</td>
-                                            <td>{channel.name}</td>
-                                            <td>{channel.category.name}</td>
-                                            <td>{channel.price}</td>
-                                            <td><button onDoubleClick={() => del(channel.id)}><i className="bi bi-trash"></i></button></td>
-                                        </tr>
-                                    ))
-                                }
-                            </tbody>
-                        </table>
+                        channels && channels.length === 0 ? (<h5>No Channels</h5>) :
+                            < table className="table table-responsive">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Channel Name</th>
+                                        <th scope="col">Cateogry</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {
+                                        channels?.map(channel => (
+                                            <tr key={channel.id}>
+                                                <td>{channel.id}</td>
+                                                <td>{channel.name}</td>
+                                                <td>{channel.category.name}</td>
+                                                <td>{channel.price}</td>
+                                                <td><button onDoubleClick={() => del(channel.id)}><i className="bi bi-trash"></i></button></td>
+                                            </tr>
+                                        ))
+                                    }
+                                </tbody>
+                            </table>
                 }
             </div >
         </>

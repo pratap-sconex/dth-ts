@@ -11,13 +11,15 @@ const channelService: ChannelService = new ChannelService();
 
 export const createLoadChannelsActionThunk = (): ThunkAction<void, StoreState, unknown, UnknownAction> => async (dispatch) => {
     dispatch(createWaitForChannelAction("Please wait while loading data...!"));
-    try {
-        let resp: AxiosResponse<Channel[]> = await channelService.getChannels();
-        dispatch(createRefreshChannelAction(resp.data));
-    } catch (exception: any) {
-        console.error(exception);
-        dispatch(createErrForChannelAction("Sorry! Unable to process the requested action! Please retry later!"));
-    }
+    setTimeout(async () => {
+        try {
+            let resp: AxiosResponse<Channel[]> = await channelService.getChannels();
+            dispatch(createRefreshChannelAction(resp.data));
+        } catch (exception: any) {
+            console.error(exception);
+            dispatch(createErrForChannelAction("Sorry! Unable to process the requested action! Please retry later!"));
+        }
+    }, 2000)
 }
 
 export const createAddChannelActionThunk = (channel: Channel): ThunkAction<void, StoreState, unknown, ChannelAction> => async (dispatch) => {
