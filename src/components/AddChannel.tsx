@@ -24,8 +24,6 @@ const AddChannel = () => {
   const formSubmitted = async (data: Channel) => {
     console.log(data);
     dispatch(createAddChannelActionThunk(data));
-    reset();
-    dispatch(createWaitForChannelAction("Adding Channel, Plz wait..."))
     setTimeout(() => {
       navigate("/channels");
     }, 2000)
@@ -51,14 +49,14 @@ const AddChannel = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="channelCategory" className="form-label">Category</label>
-                  <select className="form-select" id="channelCategory" {...register("category.name", { required: "Category cant be empty" })}>
+                  <select className="form-select" id="channelCategory" {...register("category", { required: "Category cant be empty" })}>
                     <option value="">Select Category</option>
                     <option value="entertainment">Entertainment</option>
                     <option value="sports">Sports</option>
                     <option value="news">News</option>
                     <option value="movies">Movies</option>
                   </select>
-                  <p className="text-danger">{errors.category?.name?.message}</p>
+                  <p className="text-danger">{errors.category?.message}</p>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Channel</button>
               </form>

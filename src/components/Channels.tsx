@@ -43,7 +43,7 @@ const Channels = () => {
                                             <tr key={channel.id}>
                                                 <td>{channel.id}</td>
                                                 <td>{channel.name}</td>
-                                                <td>{channel.category?.name}</td>
+                                                <td>{channel.category}</td>
                                                 <td>{channel.price}</td>
                                                 <td><button onDoubleClick={() => del(channel.id)}><i className="bi bi-trash"></i></button></td>
                                             </tr>

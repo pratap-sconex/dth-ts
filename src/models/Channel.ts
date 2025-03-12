@@ -1,9 +1,7 @@
-import Category from "./Category";
-
 interface Channel {
     id: string;
     name: string;
-    category: Category;
+    category: string;
     price: number;
 }
 

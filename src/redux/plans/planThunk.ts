@@ -13,7 +13,7 @@ export const createLoadPlansActionThunk = (): ThunkAction<void, StoreState, unkn
     dispatch(createWaitForPlanAction("Please wait while loading data...!"));
     setTimeout(async () => {
         try {
-            let resp: AxiosResponse<Plan[]> = await planService.getPlans();//doudt
+            let resp: AxiosResponse<Plan[]> = await planService.getPlans();
             dispatch(createRefreshPlanAction(resp.data));
         } catch (exception: any) {
             console.error(exception);

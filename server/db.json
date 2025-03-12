@@ -1,16 +1,8 @@
 {
   "channels": [
     {
-      "id": "a30e",
-      "name": "bannu",
-      "price": "200",
-      "category": {
-        "name": "sports"
-      }
-    },
-    {
-      "id": "f7d9",
-      "name": "sai sampath",
+      "id": "d224",
+      "name": "200",
       "price": "200",
       "duration": "2 month"
     }
