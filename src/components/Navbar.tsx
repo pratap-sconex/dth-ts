@@ -24,6 +24,12 @@ const Navbar = () => {
             <li className="nav-item">
               <Link className="nav-link" to="/add-channel">Add Channel</Link>
             </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/plans">Plans</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to="/add-plans">Add Plans</Link>
+            </li>
           </ul>
         </div>
       </div>

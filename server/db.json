@@ -1,3 +1,30 @@
 {
-  "channels": []
+  "channels": [
+    {
+      "id": "1b08",
+      "name": "s",
+      "price": "1",
+      "category": {
+        "name": "entertainment"
+      }
+    },
+    {
+      "id": "7441",
+      "name": "k",
+      "price": "10",
+      "category": {
+        "name": "sports"
+      }
+    },
+    {
+      "id": "2ec0",
+      "name": "kuamr",
+      "price": "100",
+      "category": {
+        "name": "entertainment"
+      }
+    }
+  ]
 }
+
+  
