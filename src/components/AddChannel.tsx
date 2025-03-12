@@ -22,6 +22,7 @@ const AddChannel = () => {
   )
 
   const formSubmitted = async (data: Channel) => {
+    console.log(data);
     dispatch(createAddChannelActionThunk(data));
     reset();
     dispatch(createWaitForChannelAction("Adding Channel, Plz wait..."))
@@ -32,7 +33,7 @@ const AddChannel = () => {
 
   return (
     <div className="container mt-4">
-      <h2>Add Channels</h2>
+      <h2>Add a Channel</h2>
       <div className="card">
         {
           msg ? <MsgBox msg={msg} msgType={status === ChannelStateStatus.WORK_IN_PROGRESS ? "info" : "err"} /> :

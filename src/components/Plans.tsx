@@ -1,5 +1,3 @@
-
-
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { StoreState } from "../redux/store";
@@ -7,8 +5,7 @@ import { createDeletePlanActionThunk, createLoadPlansActionThunk } from "../redu
 import { PlansReducerState, PlansStateStatus } from "../redux/plans/planReducer";
 import MsgBox from "./MsgBox";
 
-const Plans = () => 
-{
+const Plans = () => {
     const dispatch = useDispatch<any>();
 
     useEffect(() => {
@@ -25,7 +22,7 @@ const Plans = () =>
 
     return (
         <>
-            <h3 className='text-center mt-5 mb-5 fw-bold'>Channels</h3>
+            <h3 className='text-center mt-5 mb-5 fw-bold'>Plans</h3>
             <div className='mx-5'>
                 {
                     msg ? <MsgBox msg={msg} msgType={status === PlansStateStatus.WORK_IN_PROGRESS ? "info" : "err"} /> :

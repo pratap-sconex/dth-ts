@@ -22,7 +22,7 @@ export const createLoadPlansActionThunk = (): ThunkAction<void, StoreState, unkn
     }, 2000)
 }
 
-export const createAddPlanActionThunk = (plans: Plan): ThunkAction<void, StoreState, unknown,PlansAction> => async (dispatch) => {
+export const createAddPlanActionThunk = (plans: Plan): ThunkAction<void, StoreState, unknown, PlansAction> => async (dispatch) => {
     dispatch(createWaitForPlanAction("Please wait while adding data...!"));
     setTimeout(async () => {
         try {
@@ -35,7 +35,7 @@ export const createAddPlanActionThunk = (plans: Plan): ThunkAction<void, StoreSt
     }, 2000)
 };
 
-export const createDeletePlanActionThunk = (id: string): ThunkAction<void, StoreState, unknown,PlansAction> => async (dispatch) => {
+export const createDeletePlanActionThunk = (id: string): ThunkAction<void, StoreState, unknown, PlansAction> => async (dispatch) => {
     dispatch(createWaitForPlanAction("Please wait while deleting data...!"));
     try {
         await planService.deletePlansById(id);

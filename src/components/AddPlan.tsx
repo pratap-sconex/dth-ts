@@ -8,8 +8,9 @@ import { createAddPlanActionThunk } from "../redux/plans/planThunk";
 import { PlansReducerState, PlansStateStatus } from "../redux/plans/planReducer";
 import { StoreState } from '../redux/store';
 import MsgBox from "./MsgBox";
+import Plan from '../models/Plan';
 
-const AddPlans= () => {
+const AddPlan = () => {
 
   const { register, handleSubmit, formState: { errors }, reset } = useForm<Plans>({ mode: "onChange" });
 
@@ -17,24 +18,22 @@ const AddPlans= () => {
 
   const navigate = useNavigate();
 
-  
-   
   let { msg, status } = useSelector<StoreState, PlansReducerState>(
-      (state: StoreState) => state.channelsState
-    )
-  
-    const formSubmitted = async (data: Plan) => {
-      dispatch(createAddPlanActionThunk(data));
-      reset();
-      dispatch(createWaitForPlanAction("Adding Channel, Plz wait..."))
-      setTimeout(() => {
-        navigate("/channels");
-      }, 2000)
-    }
+    (state: StoreState) => state.plansState
+  )
+
+  const formSubmitted = async (data: Plan) => {
+    dispatch(createAddPlanActionThunk(data));
+    reset();
+    dispatch(createWaitForPlanAction("Adding a Plan, Plz wait..."))
+    setTimeout(() => {
+      navigate("/plans");
+    }, 2000)
+  }
 
   return (
     <div className="container mt-4">
-      <h2>Add Plans</h2>
+      <h2>Add a Plan</h2>
       <div className="card">
         {
           msg ? <MsgBox msg={msg} msgType={status === PlansStateStatus.WORK_IN_PROGRESS ? "info" : "err"} /> :
@@ -59,7 +58,7 @@ const AddPlans= () => {
                     <option value="3 month">3 month</option>
                     <option value="4 month">4 month</option>
                   </select>
-                  <p className="text-danger">{errors.duration?.name?.message}</p>
+                  <p className="text-danger">{errors.duration?.message}</p>
                 </div>
                 <button type="submit" className="btn btn-primary">Add Plan</button>
               </form>
@@ -70,4 +69,4 @@ const AddPlans= () => {
   );
 };
 
-export default AddPlans; 
+export default AddPlan; 
